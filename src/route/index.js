@@ -9,4 +9,27 @@ router.get('/', function (req, res) {
   })
 })
 
+router.get('/concept', function (req, res) {
+  res.render('concept', {
+    layout: null,
+
+  })
+})
+
+router.get('/about', function (req, res) {
+  res.render('about', {
+    layout: null,
+
+  })
+})
+
+router.get('/contacts', function (req, res) {
+  res.render('contacts', {
+    layout: null,
+
+  })
+})
+
+
+
 module.exports = router
