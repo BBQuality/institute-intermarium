@@ -1,5 +1,7 @@
 <script>
 
+// commented out for now
+/*
 function showHide(article) {
 	if (document.getElementById(article)) {
 		if (document.getElementById(article+'-show').style.display != 'none') {
@@ -12,118 +14,92 @@ function showHide(article) {
 		}
 	}
 }
+*/
+
+</script>
+
+<script>
+    // script for updating elements
+    window.onload = () => { 
+        fetchAndModify(); 
+    };
+
+    function fetchAndModify(){
+        let classElements = document.getElementsByClassName("article_block_column");
+        if(classElements.length < 1)
+            throw new Error("less then 1");
+
+        let articlesColumnEl = classElements[0];
+
+        if(!articlesColumnEl)
+            throw new Error("no needed elemnt")
+        
+        articlesColumnEl.setHTML(`<img src="https://i.gifer.com/ZKZg.gif" width="100" height="100">`)
+        getNewHtmlForArciclesPreviwe().then(res => articlesColumnEl.setHTML(res));
+    }
+
+    async function getNewHtmlForArciclesPreviwe(){
+        let html = 
+            `
+            <div class="block_title">
+                <a class="nav-link" title="Розділ: Статті та аналітика" href="/publications"
+                    style="color:rgba(151, 19, 19, 0.973);">
+                    <p class="column_title">
+                        Статті
+                    </p>
+                </a>
+            </div>`;
+
+        let articlesPreview = await fetchArticles();
+        articlesPreview.forEach((article) => {
+            let articleDiv = getArticleDiv(article);
+
+            html += articleDiv;
+        });
+
+        let bottomHtml = 
+            `
+            <div id="article-hide" class="block_add">
+                <a href="#" type="button" id="article-hide" class="add_title hideLink"
+                    onclick="showHide('article');return false;">
+                    <span class="text_show_hide">Згорнути</span>
+                </a>
+            </div>`;
+
+        return html + bottomHtml;;
+    }
+
+    async function fetchArticles(){
+        let url = 'http://localhost:3000/api/getAll';
+
+        let resp = await fetch(url, {method: 'GET'});
+        let articlesJson = await resp.json();
+
+        return articlesJson;
+    }
+
+    function getArticleDiv(article) {
+        return `
+                <div class="main_card card_article show">
+                    <a class="nav-link"
+                        title="${article.title}"
+                        href="${article.href}" style="color:rgba(151, 19, 19, 0.973);">
+                        <div class="card_img">
+                            <img src="${article.imgLink}" class="main_news_img">
+                        </div>
+                        <div class="header_news">
+                            <span class="title_news">
+                                ${article.title}
+                            </span>
+                        </div>
+                        <div class="footer_card article_date article_views">Додано: 21.06.2023</div>
+                    </a>
+                </div>`;
+    }
 
 </script>
 
 
 <div class="article_block_column">
-
-                             <div class="block_title">
-					<a class="nav-link" title="Розділ: Статті та аналітика" href="/publications" style="color:rgba(151, 19, 19, 0.973);"> 
-                                    <p class="column_title">
-                                        Статті
-                                    </p>
-					</a>
-                                </div>
-
-
-
-                            <div class="main_card card_articles show">
-					<a class="nav-link" title="Орбан та Путін за допомогою українських військовополонених розігрують карту сепаратизму в Закарпатті" href="/publications/analitics/orban_i_putin_karta_separatisma.php" style="color:rgba(151, 19, 19, 0.973);"> 
-                                <div class="card_img">
-                                    <img src="/img/volya_article_polon.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">
-                                        Орбан та Путін за допомогою українських військовополонених розігрують карту сепаратизму в Закарпатті
-                                    </span>
-                                </div>
-                                <div class="footer_card article_date article_views">Додано: 21.06.2023</div>
-</a>
-                            </div>
-
-
-
-
-                            <div class="main_card card_article show">
-<a class="nav-link" title="Щодо проекту «Великого Турану»" href="/publications/analitics/chaplygin_tilky_pochatok.php" style="color:rgba(151, 19, 19, 0.973);"> 
-                                <div class="card_img">
-                                    <img src="/img/article_turan.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">
-                                        Щодо проекту «Великого Турану»
-                                    </span>
-                                </div>
-                                <div class="footer_card article_date article_views">Додано: 16.06.2023</div>
-</a>
-                            </div>
-
-                             <div id="article-show" class="block_add">
-
-                                    <a href="#" type="button" id="article-show" class="add_title showLink" onclick="showHide('article');return false;">
-                                        <span class="text_show_hide">Показати більше</span>
-                                    </a>
-                                </div>
-
-
-
-
-                            <div id="article" class="more block_column">
-
-                             <div class="main_card card_article">
-<a class="nav-link" title="Про партнерство України та Туреччини в контексті ідеї Балто-Чорноморського союзу" href="/publications/analitics/hajdaj-turkeu_ua.php" style="color:rgba(151, 19, 19, 0.973);"> 
-                                <div class="card_img">
-                                    <img src="/img/article-hajdaj.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">
-                                        Про партнерство України та Туреччини в контексті ідеї Балто-Чорноморського союзу
-                                    </span>
-                                </div>
-                                <div class="footer_card article_date article_views">Додано: 21.05.2023</div>
-</a>
-                            </div>
-
-
-
-
-                             <div class="main_card card_article">
-<a class="nav-link" title=" Масштабне вторгнення російської федерації в Україну та футурологія війни" href="/publications/analitics/yurchenko-task_for_future_study.php" style="color:rgba(151, 19, 19, 0.973);"> 
-                                <div class="card_img">
-                                    <img src="/img/article-yiurchenko.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">
-                                        Масштабне вторгнення російської федерації в Україну та футурологія війни: уроки та завдання на майбутнє
-                                    </span>
-                                </div>
-                                <div class="footer_card article_date article_views">Додано: 08.05.2023</div>
-</a>
-                            </div>
-
-
-
-                             <div class="main_card card_article">
-<a class="nav-link" title="Концепція Інтермаріуму" href="/publications/paragraphs/intermarium-concept.php" style="color:rgba(151, 19, 19, 0.973);"> 
-                                <div class="card_img">
-                                    <img src="/img/inmarmaping.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">
-                                        Концепція Інтермаріуму
-                                    </span>
-                                </div>
-                                <div class="footer_card article_date article_views">Додано: 27.04.2023</div>
-</a>
-                            </div>
-
-
-
-                              <div id="article-hide" class="block_add">
-                                        <a href="#" type="button" id="article-hide" class="add_title hideLink" onclick="showHide('article');return false;">
-                                                <span class="text_show_hide">Згорнути</span>
-                                        </a>
-                             </div>
-    </div>
+{{!-- here the articles previews are rendered --}}
 </div>

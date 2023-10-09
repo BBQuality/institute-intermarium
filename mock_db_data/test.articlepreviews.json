@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "65231993489d4fb5d576519f"
+  },
+  "title": "Орбан та Путін за допомогою українських військовополонених розігрують карту сепаратизму в Закарпатті",
+  "href": "/publications/analitics/orban_i_putin_karta_separatisma.php",
+  "imgLink": "/img/volya_article_polon.webp",
+  "dateAddedTxt": "21.06.2023",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "652319d3489d4fb5d57651a1"
+  },
+  "title": "Щодо проекту «Великого Турану»",
+  "href": "/publications/analitics/chaplygin_tilky_pochatok.php",
+  "imgLink": "/img/article_turan.webp",
+  "dateAddedTxt": "16.06.2023",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65231a1f489d4fb5d57651a5"
+  },
+  "title": "Про партнерство України та Туреччини в контексті ідеї Балто-Чорноморського союзу",
+  "href": "/publications/analitics/hajdaj-turkeu_ua.php",
+  "imgLink": "/img/article-hajdaj.webp",
+  "dateAddedTxt": "21.05.2023",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65231a56489d4fb5d57651a7"
+  },
+  "title": "Масштабне вторгнення російської федерації в Україну та футурологія війни",
+  "href": "/publications/analitics/yurchenko-task_for_future_study.php",
+  "imgLink": "/img/article-yiurchenko.webp",
+  "dateAddedTxt": "08.05.2023",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65231a7e489d4fb5d57651a9"
+  },
+  "title": "Концепція Інтермаріуму",
+  "href": "/publications/paragraphs/intermarium-concept.php",
+  "imgLink": "/img/inmarmaping.webp",
+  "dateAddedTxt": "27.04.2023",
+  "__v": 0
+}]

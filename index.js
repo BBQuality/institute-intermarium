@@ -9,6 +9,23 @@ const debug = require('debug')(
   'template-express-live-reload:server',
 )
 const http = require('http')
+const mongoose = require('mongoose')
+
+// env vars
+require('dotenv').config();
+
+// db config
+
+const mongoString = process.env.DATABASE_URL;
+mongoose.connect(mongoString);
+const database = mongoose.connection;
+database.on('error', (error) => {
+  console.log(error);
+});
+
+database.once('connected', () => {
+  console.log('Database Connected');
+});
 
 /**
  * Get port from environment and store in Express.

@@ -43,9 +43,12 @@ if (process.env.NODE_ENV === 'development') {
   app.use(connectLiveReload())
 }
 
-const route = require('./src/route/index.js')
+const route = require('./src/route/index.js');
+const apiRouter = require('./src/route/api/articles.js');
 
 app.use('/', route)
+app.use('/api', apiRouter);
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404))
