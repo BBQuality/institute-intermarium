@@ -1,24 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose')
 
-const ArticleModel = require("../../models/Article")
-
+const AuthorModel = require("../../models/Author")
 
 router.post('/postOne', async(req, res) => {
     const reqObj = req.body;
 
-    const newData = new ArticleModel({
-        title: reqObj.title,
-        content : reqObj.content,
-        author: new mongoose.Types.ObjectId(reqObj.authorId),
-        summary: reqObj.summary
+    const newData = new AuthorModel({
+        firstName: reqObj.firstName,
+        lastName : reqObj.lastName,
+        about: reqObj.about,
+        title: reqObj.title
     });
-    // console.log({title: reqObj.title,
-    //     content : reqObj.content,
-    //     author: reqObj.authorId,
-    //     summary: reqObj.summary});
-    // console.log(newData);
+
     try{
         const savedData = await newData.save();
         res.status(201).json(savedData);
@@ -31,7 +25,7 @@ router.post('/postOne', async(req, res) => {
 
 router.get('/getall', async(req, res) => {
     try{
-        const data = await ArticleModel.find();
+        const data = await AuthorModel.find();
         res.json(data);
     }
     catch(error){

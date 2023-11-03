@@ -44,10 +44,14 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const route = require('./src/route/index.js');
-const apiRouter = require('./src/route/api/articles.js');
+const articlesApiRouter = require('./src/route/api/articles.js');
+const authorsApiRouter = require('./src/route/api/authors.js');
+const newsArticlesApiRouter = require('./src/route/api/newsArticles.js');
 
 app.use('/', route)
-app.use('/api', apiRouter);
+app.use('/api/articles', articlesApiRouter);
+app.use('/api/newsArticles', newsArticlesApiRouter);
+app.use('/api/authors', authorsApiRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

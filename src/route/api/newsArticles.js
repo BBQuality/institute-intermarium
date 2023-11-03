@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose')
 
-const ArticleModel = require("../../models/Article")
+const NewsArticleModel = require("../../models/NewsArticle")
 
 
 router.post('/postOne', async(req, res) => {
     const reqObj = req.body;
 
-    const newData = new ArticleModel({
+    const newData = new NewsArticleModel({
         title: reqObj.title,
         content : reqObj.content,
         author: new mongoose.Types.ObjectId(reqObj.authorId),
@@ -31,7 +31,7 @@ router.post('/postOne', async(req, res) => {
 
 router.get('/getall', async(req, res) => {
     try{
-        const data = await ArticleModel.find();
+        const data = await NewsArticleModel.find();
         res.json(data);
     }
     catch(error){
