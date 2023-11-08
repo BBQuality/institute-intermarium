@@ -1,45 +1,45 @@
 <script>
 
-// commented out for now
-/*
-function showHide(article) {
-	if (document.getElementById(article)) {
-		if (document.getElementById(article+'-show').style.display != 'none') {
-			document.getElementById(article+'-show').style.display = 'none';
-			document.getElementById(article).style.display = 'flex';
-		}
-		else {
-			document.getElementById(article+'-show').style.display = 'inline';
-			document.getElementById(article).style.display = 'none';
-		}
-	}
-}
-*/
+    // commented out for now
+
+    function showHide(article) {
+        if (document.getElementById(article)) {
+            if (document.getElementById(article + '-show').style.display != 'none') {
+                document.getElementById(article + '-show').style.display = 'none';
+                document.getElementById(article).style.display = 'flex';
+            }
+            else {
+                document.getElementById(article + '-show').style.display = 'inline';
+                document.getElementById(article).style.display = 'none';
+            }
+        }
+    }
+
 
 </script>
 
 <script>
     // script for updating elements
-    window.onload = () => { 
-        fetchAndModify(); 
+    window.onload = () => {
+        fetchAndModify();
     };
 
-    function fetchAndModify(){
+    function fetchAndModify() {
         let classElements = document.getElementsByClassName("article_block_column");
-        if(classElements.length < 1)
+        if (classElements.length < 1)
             throw new Error("less then 1");
 
         let articlesColumnEl = classElements[0];
 
-        if(!articlesColumnEl)
+        if (!articlesColumnEl)
             throw new Error("no needed elemnt")
-        
+
         articlesColumnEl.setHTML(`<img src="https://i.gifer.com/ZKZg.gif" width="100" height="100">`)
         getNewHtmlForArciclesPreviwe().then(res => articlesColumnEl.setHTML(res));
     }
 
-    async function getNewHtmlForArciclesPreviwe(){
-        let html = 
+    async function getNewHtmlForArciclesPreviwe() {
+        let html =
             `
             <div class="block_title">
                 <a class="nav-link" title="Розділ: Статті та аналітика" href="/publications"
@@ -52,12 +52,17 @@ function showHide(article) {
 
         let articlesPreview = await fetchArticles();
         articlesPreview.forEach((article) => {
-            let articleDiv = getArticleDiv(article);
+            try {
+                let articleDiv = getArticleDiv(article);
+                html += articleDiv;
+            }
+            catch (e) {
+                console.log(e)
+            }
 
-            html += articleDiv;
         });
 
-        let bottomHtml = 
+        let bottomHtml =
             `
             <div id="article-hide" class="block_add">
                 <a href="#" type="button" id="article-hide" class="add_title hideLink"
@@ -69,37 +74,48 @@ function showHide(article) {
         return html + bottomHtml;;
     }
 
-    async function fetchArticles(){
-        let url = 'http://localhost:3000/api/getAll';
+    async function fetchArticles() {
+        let url = 'http://localhost:3000/api/articles/getAll';
 
-        let resp = await fetch(url, {method: 'GET'});
+        let resp = await fetch(url, { method: 'GET' });
         let articlesJson = await resp.json();
 
         return articlesJson;
     }
 
     function getArticleDiv(article) {
+        console.log(typeof (article.createdAt))
         return `
-                <div class="main_card card_article show">
-                    <a class="nav-link"
-                        title="${article.title}"
-                        href="${article.href}" style="color:rgba(151, 19, 19, 0.973);">
-                        <div class="card_img">
-                            <img src="${article.imgLink}" class="main_news_img">
-                        </div>
-                        <div class="header_news">
-                            <span class="title_news">
-                                ${article.title}
-                            </span>
-                        </div>
-                        <div class="footer_card article_date article_views">Додано: 21.06.2023</div>
-                    </a>
+                <div class="col article">
+
+                    <div class="card" style="width: 18rem; color: rgba(151, 19, 19, 0.973);">
+                        <a class='nav-link' title='${article.title}' href='${article._id}'>
+                            <img src="${article.content[0].images[0]}" class="card-img-top" alt="...">
+                            <div class="card-body" style="background-color: var(--color-desert-card)">
+                                <h5 class="card-title ">
+                                    ${article.title}
+                                </h5>
+                            </div>
+
+                        </a>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style="background-color: rgba(151, 19, 19, 0.973);"><span
+                                    class='news_date'>Додано: ${article.createdAt.slice(0, 10)}</span></li>
+                            <li class="list-group-item " style="background-color: rgba(151, 19, 19, 0.973);"><span
+                                    class='news_date'>Автор: ${article.author.firstName} ${article.author.lastName}</span></li>
+                        </ul>
+
+                    </div>
                 </div>`;
     }
 
 </script>
 
 
-<div class="article_block_column">
-{{!-- here the articles previews are rendered --}}
+<div class="article_block_column" style="    
+        overflow: auto;
+        text-align: justify;
+        padding: 20px;
+        height: 63rem">
+    {{!-- here the articles previews are rendered --}}
 </div>

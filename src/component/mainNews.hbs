@@ -1,124 +1,128 @@
 <script>
 
-function showHide(news) {
-	if (document.getElementById(news)) {
-		if (document.getElementById(news+'-show').style.display != 'none') {
-			document.getElementById(news+'-show').style.display = 'none';
-			document.getElementById(news).style.display = 'flex';
-		}
-		else {
-			document.getElementById(news+'-show').style.display = 'inline';
-			document.getElementById(news).style.display = 'none';
-		}
-	}
-}
+    function showHide(news) {
+        if
+            (document.getElementById(news)) {
+            if
+                (document.getElementById(news + '-show').style.display !=
+                'none') {
+                document.getElementById(news +
+                    '-show').style.display = 'none';
+                document.getElementById(news).style.display = 'flex';
+            }
+            else {
+                document.getElementById(news +
+                    '-show').style.display = 'inline';
+                document.getElementById(news).style.display = 'none';
+            }
+        }
+    }
 
 </script>
 
-<div class="news_block_column">
-
-    
-                                <div class="block_title">
-					<a class="nav-link" title="Розділ: Новини та події" href="/tidings" style="color:rgba(151, 19, 19, 0.973);"> 
-                                    <p class="column_title">
-                                        Новини
-                                    </p>
-					</a>
-                                </div>
 
 
-                            <div class="main_card card_news show">
-					<a class="nav-link" title="Україна та Тюркський світ" href="/tidings/news/turskworld.php" style="color:rgba(151, 19, 19, 0.973);"> 
-                                <div class="card_img">
-                                    <img src="/img/turskworld.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">«Україна та Тюркський світ». Онлайн-конференція. Частина 1. Безпека</span>
-                                </div>
-                                <div class="footer_card  news_views">
-                                    <span class="news_date">Додано: 26.06.2023</span></div>
-					</a>
-                            </div>
+<div class='news_block_column'>
+    <div class='block_title'>
+        <a class='nav-link' title='Розділ: Новини та події' href='/tidings' style='color:rgba(151, 19, 19, 0.973);'>
+            <p class='column_title'>
+                Новини
+            </p>
+        </a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-1 g-4">
+        <div class="col">
+            <div class="card" style="width: 18rem; color: rgba(151, 19, 19, 0.973);">
+                <img src="/img/turskworld.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title ">
+                        Орбан та Путін за допомогою українських військовополонених розігрують
+                        карту
+                        сепаратизму в Закарпатті
+                    </h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="background-color: rgba(151, 19, 19, 0.973);"><span
+                            class='news_date'>Додано: 26.06.2023</span></li>
+                    <li class="list-group-item " style="background-color: rgba(151, 19, 19, 0.973);"><span
+                            class='news_date'>Автор: Хлопчина Розумний</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col">
+
+            <div class="card" style="width: 18rem; color: rgba(151, 19, 19, 0.973);">
+                <a class='nav-link' title='Україна та Тюркський світ' href='/tidings/news/turskworld.php'>
+                    <img src="/img/turskworld.webp" class="card-img-top" alt="...">
+                    <div class="card-body" style="background-color: var(--color-desert-card)">
+                        <h5 class="card-title ">
+                            Орбан та Путін за допомогою українських військовополонених розігрують
+                            карту
+                            сепаратизму в Закарпатті
+                        </h5>
+                    </div>
+
+                </a>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="background-color: rgba(151, 19, 19, 0.973);"><span
+                            class='news_date'>Додано: 26.06.2023</span></li>
+                    <li class="list-group-item " style="background-color: rgba(151, 19, 19, 0.973);"><span
+                            class='news_date'>Автор: Хлопчина Розумний</span></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="col">
+
+            <div class="card" style="width: 18rem; color: rgba(151, 19, 19, 0.973);">
+                <a class='nav-link' title='Україна та Тюркський світ' href='/tidings/news/turskworld.php'>
+                    <img src="/img/turskworld.webp" class="card-img-top" alt="...">
+                    <div class="card-body" style="background-color: var(--color-desert-card)">
+                        <h5 class="card-title ">
+                            Орбан та Путін за допомогою українських військовополонених розігрують
+                            карту
+                            сепаратизму в Закарпатті
+                        </h5>
+                    </div>
+
+                </a>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="background-color: rgba(151, 19, 19, 0.973);"><span
+                            class='news_date'>Додано: 26.06.2023</span></li>
+                    <li class="list-group-item " style="background-color: rgba(151, 19, 19, 0.973);"><span
+                            class='news_date'>Автор: Хлопчина Розумний</span></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="col">
+
+            <div class="card" style="width: 18rem; color: rgba(151, 19, 19, 0.973);">
+                <a class='nav-link' title='Україна та Тюркський світ' href='/tidings/news/turskworld.php'>
+                    <img src="/img/turskworld.webp" class="card-img-top" alt="...">
+                    <div class="card-body" style="background-color: var(--color-desert-card)">
+                        <h5 class="card-title ">
+                            Орбан та Путін за допомогою українських військовополонених розігрують
+                            карту
+                            сепаратизму в Закарпатті
+                        </h5>
+                    </div>
+
+                </a>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="background-color: rgba(151, 19, 19, 0.973);"><span
+                            class='news_date'>Додано: 26.06.2023</span></li>
+                    <li class="list-group-item " style="background-color: rgba(151, 19, 19, 0.973);"><span
+                            class='news_date'>Автор: Хлопчина Розумний</span></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
 
 
-                            <div class="main_card card_news show">
-					<a class="nav-link" title="Президент Чехії про росіян" href="/tidings/news/czech_about_russian.php" style="color:rgba(151, 19, 19, 0.973);"> 
-                                <div class="card_img">
-                                    <img src="/img/czech_presid.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">Президент Чехії: росіяни, мають бути «під наглядом»</span>
-                                </div>
-                                <div class="footer_card  news_views">
-                                    <span class="news_date">Додано: 16.06.2023</span></div>
-					</a>
-                            </div>
-
-
-                                <div id="news-show" class="block_add">
-
-                                    <a href="#" type="button" id="news-show" class="add_title showLink" onclick="showHide('news');return false;">
-                                        <span class="text_show_hide">Показати більше</span>
-                                    </a>
-                                </div>
-
-
-                             <div id="news" class="more block_column">
-
-                            <div class="main_card card_news">
-					<a class="nav-link" title="ІІІ Конгрес самоврядування в Любліні" href="/tidings/news/congresstrim.php" style="color:rgba(151, 19, 19, 0.973);"> 
-                                <div class="card_img">
-                                    <img src="/img/lublin.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">В Любліні відбувся ІІІ Конгрес самоврядування Тримор’я</span>
-                                </div>
-                                <div class="footer_card news_date news_views">Додано: 21.05.2023</div>
-					</a>
-                            </div>
-	                           
-                              <div class="main_card card_news">
-					<a class="nav-link" title="Калінінград перейменували на Крулєвєц" href="/tidings/news/krulevec.php" style="color:rgba(151, 19, 19, 0.973);"> 
-                                <div class="card_img">
-                                    <img src="/img/krulevec.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">В Польщі перейменували Калінінград на Крулєвєц</span>
-                                </div>
-                                <div class="footer_card news_date news_views">Додано: 12.05.2023</div>
-					</a>
-                            </div>
-
-                              <div class="main_card card_news">
-					<a class="nav-link " href="/tidings/news/poldanes.php" style="color:rgba(151, 19, 19, 0.973);">
-                                <div class="card_img">
-                                    <img src="/img/duda_pol.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">Дуда пояснив, чому Польща допомагає Україні</span>
-                                </div>
-                                <div class="footer_card news_date news_views">Додано: 04.05.2023</div>
-					</a>
-                            </div>
-
-                              <div class="main_card card_news">
-					<a class="nav-link card-text" href="/tidings/news/intermarium-fund.php" style="color:rgba(151, 19, 19, 0.973);" title="Заснування Інституту Інтермаріум"> 
-                                <div class="card_img">
-                                    <img src="/img/publicemb.webp" class="main_news_img">
-                                </div>
-                                <div class="header_news">
-                                    <span class="title_news">В Україні засновано Інститут Інтермаріум</span>
-                                </div>
-                                <div class="footer_card news_date news_views">Додано: 06.04.2023</div>
-					</a>
-                            </div>
-                           
-                          
-<div id="news-hide" class="block_add">
- <a href="#" type="button" id="news-hide" class="add_title hideLink" onclick="showHide('news');return false;">
-    <span class="text_show_hide">Згорнути</span>
-    </a>
- </div>
-     </div>
- </div>
-                       
+</div>
