@@ -1,0 +1,160 @@
+<script>
+
+    // script for updating elements
+    window.onload = () => {
+        let articleId = "{{articleId}}";
+        fetchArticle(articleId).then(articleResult => renderArticle(articleResult));
+    };
+
+    async function fetchArticle(id) {
+
+        let url = `/api/articles/getone/${id}`;
+
+        let resp = await fetch(url, { method: 'GET' });
+        let article = await resp.json();
+        return article;
+    }
+
+    function renderArticle(article) {
+        setArticleTitleText(article.title);
+        var firstContentImage = article?.content[0]?.images[0];
+        if (firstContentImage) {
+            setArticleMainImage(firstContentImage)
+        }
+
+        var mainArticleContent = generateArticleContent(article, skipFirstImages = true)
+        setMainArticleContent(mainArticleContent)
+    }
+
+    function setArticleMainImage(imageSrc) {
+
+        let classElements = document.getElementsByClassName("main-img");
+        if (classElements.length < 1)
+            throw new Error("less then 1");
+
+        let imgPlaceholder = classElements[0];
+
+        if (!imgPlaceholder)
+            throw new Error("no needed main-img elemnt")
+
+        let content = `
+        <img id="cssDisplay" class="flex-person inside-box pict me-5" src="${imageSrc}">
+        `
+
+        imgPlaceholder.innerHTML = content;
+    }
+
+    function setArticleTitleText(articleTitleText) {
+        let classElements = document.getElementsByClassName("title-header");
+        if (classElements.length < 1)
+            throw new Error("less then 1");
+
+        let articleHeader = classElements[0];
+
+        if (!articleHeader)
+            throw new Error("no needed article-header elemnt")
+
+        articleHeader.innerText = articleTitleText;
+    }
+
+    function setMainArticleContent(mainContent) {
+        let classElements = document.getElementsByClassName("main-content");
+        if (classElements.length < 1)
+            throw new Error("less then 1");
+
+        let mainContentPlaceholder = classElements[0];
+
+        if (!mainContentPlaceholder)
+            throw new Error("no needed article-header elemnt")
+
+        mainContentPlaceholder.innerHTML = mainContent;
+    }
+
+    function generateArticleContent(article, skipFirstImageSet = false) {
+        let content = article.content;
+
+        let text = "";
+
+        for (let i = 0; i < content.length; i++) {
+            let contentItem = content[i];
+
+            // render images for image set if applicable
+            if (!skipFirstImageSet || i !== 0) {
+                let images = contentItem.images;
+                for (let j = 0; j < images?.length; j++) {
+                    let image = images[j];
+
+                    if (image) {
+                        text += `
+                        <img id="cssDisplay" class="flex-person inside-box pict me-5" src="${image}">
+                        `
+                    }
+
+                }
+
+            }
+
+            // add text part
+            if (contentItem?.text) {
+                text += ` 
+                    <p class="description fstring">${contentItem.text}</p>
+                    <br>
+                    `
+            }
+
+        }
+
+
+        // summary
+        if (article?.summary) {
+            text += `
+                    <p class="description fstring"><b>
+                        Резюме.
+                    </b></p>
+
+                    <p class="description fstring">
+                    ${article.summary}
+                    </p>
+                    
+                    <br>
+                `;
+        }
+
+        // author
+        if (article?.author?.firstName) {
+            let author = article.author;
+
+            text += `
+                    <p class="description fs-4 mt-2"><b>Автор: ${author.firstName} ${author.lastName}</b></p>
+                    <p class="description fs-4 text-start"><i>${author.title}</i></p>
+                `;
+        }
+        console.log(text);
+        return text;
+    }
+
+</script>
+
+
+
+<div class="central">
+
+    <div class="w3-main large box7 resume">
+
+        <div class="main-img w3-auto p-2">
+            {{!-- placeholder for img --}}
+        </div>
+
+        <div class="center w3-auto large title-row resume px-5">
+            <h3 class="title-header p-1 fw-bold">
+                {{!-- placeholder for header text --}}
+            </h3>
+        </div>
+
+        <div class="main-content w3-auto large dispconter justify resume box3 mb-5">
+            {{!-- placeholder for main content --}}
+        </div>
+
+    </div>
+
+</div>

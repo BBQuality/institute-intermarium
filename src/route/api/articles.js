@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose')
 
-const ArticleModel = require("../../models/Article")
+const articlesOps = require("./../../dbOps/articlesOps")
 
 
 // router.post('/postOne', async(req, res) => {
@@ -30,13 +29,32 @@ const ArticleModel = require("../../models/Article")
 // });
 
 router.get('/getall', async(req, res) => {
+    console.log("getall")
     try{
-        const data = await ArticleModel.find().populate("author");
+        const data = await articlesOps.getAllArticles(true);
         res.json(data);
     }
     catch(error){
         console.log(error);
-        res.status(400).json(error);
+        res.status(400);
+    }
+});
+
+router.get('/getOne/:id', async(req, res) => {
+
+    try{
+        let id = req.params.id;
+        const article = await articlesOps.getArticle(id);
+        if(article){
+            res.json(article);
+        }
+        else{
+            res.status(404);
+        }
+    }
+    catch(error){
+        console.log(error);
+        res.status(500);
     }
 });
 
